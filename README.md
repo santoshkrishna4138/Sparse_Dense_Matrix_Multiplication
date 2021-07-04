@@ -1,7 +1,9 @@
 <h1>Column_wise_560</h1>
 <p>This is the repository containing the column-wise implementation of matrix multiplication for the matrix dimension of 560 x 560. I have also assumed that the first matrix is a sparse matrix with the NNZ=8960.</p>
 <h3>Block Diagram</h3>
-<img src="https://user-images.githubusercontent.com/79155839/124373494-48e11f00-dcb0-11eb-86c0-e0992302ba88.png/>
+
+
+<img src="https://user-images.githubusercontent.com/79155839/124373534-a1b0b780-dcb0-11eb-9d79-2a32a5dc8a50.png" alt="Block Diagram"/>
 
 <h3>Description of the files </h3>
 <ol>
