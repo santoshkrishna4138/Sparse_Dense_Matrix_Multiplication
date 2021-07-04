@@ -1,5 +1,8 @@
 <h1>Column_wise_560</h1>
 <p>This is the repository containing the column-wise implementation of matrix multiplication for the matrix dimension of 560 x 560. I have also assumed that the first matrix is a sparse matrix with the NNZ=8960.</p>
+<h3>Block Diagram</h3>
+<img src="https://user-images.githubusercontent.com/79155839/124373286-b2602e00-dcae-11eb-8571-5f817d774ad3.png"/>
+
 <h3>Description of the files </h3>
 <ol>
  <li>topmod.v</li><p> This the top module for the entire design and used as the top module for synthesis. This instantiates all the other modules involved in the design</p>
