@@ -1,6 +1,6 @@
 <h1>Column_wise_560</h1>
 <p>This is the repository containing the necessary verilog files for column-wise implementation of sparse-dense matrix multiplication for the matrix dimension of 560 x 560. I have also assumed that the first matrix is a sparse matrix with the number of non zeroes of 8960 equally distributed along columns.</p>
-<h3>Block Diagram</h3>
+<h3>Block diagram</h3>
 
 
 <img src="https://user-images.githubusercontent.com/79155839/124373534-a1b0b780-dcb0-11eb-9d79-2a32a5dc8a50.png" alt="Block Diagram"/>
