@@ -1,5 +1,10 @@
 <h1>Column_wise_560</h1>
 <p>This is the repository containing the column-wise implementation of matrix multiplication for the matrix dimension of 560 x 560. I have also assumed that the first matrix is a sparse matrix with the NNZ=8960.</p>
+<h3>Description of the files </h3>
+<ol>
+ <li>topmod.v</li><p>blah blah blah</p>
+</ol>
+
 <h3>Xilinx IP Instantiation</h3> 
  <p>The sparse matrix is stored in the COO format.</p>
 <p>Other than the files included in the repository, in order to run the code, the following Xilinx IPs will have to be instantiated with the settings for each described below.</p>
