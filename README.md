@@ -13,7 +13,7 @@
  <li>adder_output.v</li><p>This module is the block responsible for reading from the 16 partial product storing BRAMs and summing them up and sending them out as final output matrix. The output is sent 2 values every cycle and each instance of adder_output.v is responsible for generating one output value every cycle.</p>
  <li>MUL_BLOCK.v</li><p>This module consists of a single instance of a multiplier IP and is responsible for giving it valid output and giving out valid outputs as and when the multiplier produces an output. </p>
  <li>ADDITION_BLOCK.v</li><p>This module is responsible for adding the newly generated partial product with the pre-existing partial product within the partial product BRAM.</p>
- <li>sr_flip.v</li><p> This module consists of simple single bit counters</p>
+ <li>sr_flip.v</li><p> This module consists of simple single bit counters.</p>
  <li>simulation.v</li> <p>This module is the testbench used for the simulation of the design. It instantiates topmod.v and provides the inputs and collects the output from the design.</p>
 </ol>
 
