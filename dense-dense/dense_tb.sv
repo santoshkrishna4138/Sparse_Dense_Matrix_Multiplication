@@ -28,7 +28,8 @@ module dense_tb(clk, rst, datain1, datain2, dataout1, dataout2, valid);
     output reg rst;
     output reg [31:0] datain1, datain2;
 
-    int A [559:0][559:0], B [559:0][559:0], R [559:0][559:0];
+    int A [0:559][0:559], B [0:559][0:559], R_E [0:559][0:559];
+    longint R_A [0:559][0:559];
     
     initial
     begin
@@ -37,6 +38,14 @@ module dense_tb(clk, rst, datain1, datain2, dataout1, dataout2, valid);
         begin
             A[i][j] = $urandom%10;
             B[i][j] = $urandom%10;
+        end
+        
+    for (int i = 0; i < 560; i++) 
+        for (int j = 0; j < 560; j++) 
+        begin
+            R_E[i][j] = 0;
+            for (int k = 0; k < 560; k++)
+                R_E[i][j] += A[i][k] * B[k][j];
         end
     end
     
@@ -53,11 +62,10 @@ module dense_tb(clk, rst, datain1, datain2, dataout1, dataout2, valid);
         while(1)
         begin
             @(posedge clk);
-            if(count == 0 || count == 560)
+            if(count == 0 || count == 561)
             begin
                 datain1 = A[i][j];
                 datain2 = A[i][j+1];
-                
                 if(j == 558)
                 begin
                     j = 0;
@@ -65,7 +73,7 @@ module dense_tb(clk, rst, datain1, datain2, dataout1, dataout2, valid);
                 end
                 else
                     j = j + 2;
-                if(count == 560)
+                if(count == 561)
                     count = 0;
             end
             else
@@ -85,10 +93,20 @@ module dense_tb(clk, rst, datain1, datain2, dataout1, dataout2, valid);
             end
             count = count + 1;
             
+        end
+
+    end
+    
+    initial
+    begin
+        while(1)
+        begin
+            @(posedge clk);
             if (valid)
             begin
-                R[l][m] = dataout1;
-                R[l][m+1] = dataout2;
+                R_A[l][m] = dataout1;
+                R_A[l][m+1] = dataout2;
+                
                 if(m == 558)
                 begin
                     m = 0;
@@ -96,15 +114,13 @@ module dense_tb(clk, rst, datain1, datain2, dataout1, dataout2, valid);
                 end
                 else
                     m = m + 2;
-                    
+                
                 if(l == 560)
                     $finish;
-                    
+        
             end
-       end
-
+        end
     end
     
-
     
 endmodule
