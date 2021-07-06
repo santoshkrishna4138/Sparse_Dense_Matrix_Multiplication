@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 05.07.2021 13:48:33
+// Create Date: 06.07.2021 09:36:12
 // Design Name: 
-// Module Name: mul_new_COO
+// Module Name: mul_sparse
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -23,10 +23,7 @@
 module mul_sparse(clk, rst, datain1, datain2, dataout1, dataout2 ,addrext, valid, zeros);
 
     input clk, rst;
-    input [31:0] datain1, datain2;      //Input data i.e dense matrix values row-wise. 
-                                        //Ex: If the first row of the dense matrix is being received then the 1st and 2nd
-                                        // elements of the 1st row will come in though datain1 and datain2 respectively
-                                        // Then the 3rd and 4th element of the same row and so on
+    input [31:0] datain1, datain2;      //Input data i.e dense matrix values row-wise. Both datain1 and datain2 from the same row.
     
     output [9:0] addrext;               //Address sent to the external device that stores the dense matrix.
                                         //Only the row number is sent (0 to 559).
@@ -99,7 +96,7 @@ module mul_sparse(clk, rst, datain1, datain2, dataout1, dataout2 ,addrext, valid
         bp <= 1;
         we_res <= 0;
         addr_resa1 <= 0;
-        addr_resb1 <= 0;
+        addr_resb1 <= 9;
         row_reg <= 0;
         valid <= 0;
     end
@@ -114,29 +111,18 @@ module mul_sparse(clk, rst, datain1, datain2, dataout1, dataout2 ,addrext, valid
         if(counter[11])
             we_res <= 1;
         
-        
         if(we_res)
         begin
             if(addr_resa1 == 279)
                 addr_resa1 <= 0;
             else
                 addr_resa1 <= addr_resa1 + 1;
-            
-            case(addr_resa1)
-                270: addr_resb1 <= 0;
-                271: addr_resb1 <= 1;
-                272: addr_resb1 <= 2;
-                273: addr_resb1 <= 3;
-                274: addr_resb1 <= 4;
-                275: addr_resb1 <= 5;
-                276: addr_resb1 <= 6;
-                277: addr_resb1 <= 7;
-                278: addr_resb1 <= 8;
-                279: addr_resb1 <= 9;
-                
-                default: addr_resb1 <= addr_resa1 + 10;
-            endcase
-            
+              
+            if(addr_resb1 == 279)
+                addr_resb1 <= 0;
+            else
+                addr_resb1 <= addr_resb1 + 1;
+             
             if(counter[5])
             begin
                 row_reg <= row_wire;
@@ -154,8 +140,8 @@ module mul_sparse(clk, rst, datain1, datain2, dataout1, dataout2 ,addrext, valid
             end
             else
                 zeros <= 0;
-
         end
     end
 	
 endmodule
+
