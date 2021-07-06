@@ -91,7 +91,7 @@ module mul_dense(clk, rst, datain1, datain2, dataout1, dataout2, valid);
             constant2 <= datain2;
         end
         
-        if(counter[281])
+        if(counter[282])
             constant1 <= constant2; 
         
         if(counter[14])
@@ -112,13 +112,13 @@ module mul_dense(clk, rst, datain1, datain2, dataout1, dataout2, valid);
                     addr_resb1 <= addr_resb1 + 1;
 
             
-            if(counter[289] || counter[8])
+            if(counter[288] || counter[7])
+            begin
                 valid <= 0;
-            
-            if((counter[290] || counter[9]) && bp)
-                valid <= 1;
-            
-            if(counter[287] || counter[6])
+                bp <= 0;
+            end
+
+            if(counter[289] || counter[8])
             begin
                 
                 if(E)
