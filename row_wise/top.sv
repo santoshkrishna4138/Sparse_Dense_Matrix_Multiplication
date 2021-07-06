@@ -32,7 +32,7 @@ module top();
     
     always #5 clk = ~clk;
     
-    dense_tb TB(clk, rst, datain1, datain2, dataout1, dataout2 ,addrext, valid, zeros);
+    sparse_tb TB(clk, rst, datain1, datain2, dataout1, dataout2 ,addrext, valid, zeros);
     mul_sparse U0(clk, rst, datain1, datain2, dataout1, dataout2 ,addrext, valid, zeros);
     
 endmodule
