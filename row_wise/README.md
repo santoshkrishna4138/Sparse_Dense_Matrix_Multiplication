@@ -7,18 +7,18 @@
 <br>
 <h2>Description of files </h2>
 <ol>
-  <li> top.sv </li>
-    <p>This module instantiates the design and the testbench.</p>
   <li> mul_sparse.v </li>
-    <p>This file has the design code that implements the multiplication. It makes use of various IPs.</p>
+    <p>This file has the design code that implements the multiplication. It makes use of various IPs. This is also the file that is synthesised.</p>
   <li> comparator.v </li>
     <p>A simple 32-bit comparator, used by the design file.</p>
   <li> shift_reg.v </li>
     <p>A shift register, used by design file.</p>
   <li> slow_clk.v </li>
-    <p>Generates a clock signal that is 28 times slower than the main clock.</p>
+    <p>Generates a clock signal that is 28 times slower than the main clock, used by the design file.</p>
   <li> sparse_tb.sv </li>
-    <p>This is used by the top module to generate stimilus and drive the design file.</p>
+    <p>This is used by the top module to generate stimilus, drive the design file, and collect the outputs.</p>
+  <li> top.sv </li>
+    <p>This module instantiates the design and the testbench.</p>
 </ol>
 
 <h2>IP Instantiation </h2>
