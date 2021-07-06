@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 05.07.2021 16:54:57
+// Create Date: 06.07.2021 09:37:57
 // Design Name: 
-// Module Name: sparse_COO_tb
+// Module Name: sparse_tb
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -29,7 +29,7 @@ module sparse_tb(clk, rst, datain1, datain2, dataout1, dataout2 ,addrext, valid,
     output reg rst;
     output reg [31:0] datain1, datain2;
 
-    int A [559:0][559:0], R [559:0][559:0];
+    int A [0:559][0:559], R [0:559][0:559];
     
     initial
     begin
@@ -76,9 +76,11 @@ module sparse_tb(clk, rst, datain1, datain2, dataout1, dataout2 ,addrext, valid,
                     y = y + 2;
                 
                 if(x == 560)
-                    $finish;
-                    
+                    $finish;    
             end
+            
+            if(zeros)
+                x = x + 1;
        end
 
     end
